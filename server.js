@@ -28,3 +28,6 @@ function listening(){
     console.log("server running");
     console.log(`running on localhost ${port}`);
 }
+
+projectData = {
+}

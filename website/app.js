@@ -40,6 +40,20 @@ const postData = async (url = '', data = {})=>{
     }
 }
 
+const updateUI= async ()=>{
+    const request = await fetch('/all');
+    try{
+        const allData = await request.json();
+        //console.log("alldata is",allData);
+        document.getElementById('date').innerHTML = allData[0].date; 
+        document.getElementById('temp').innerHTML = allData[0].temperature  + ' degrees';
+        document.getElementById('content').innerHTML = allData[0].feelings;    
+    }
+    catch(error){
+        console.log('error', error);
+    }
+}
+
 const getTemperature = async (baseurl, apiKey, zipcode, feelings)=>{
     const finalurl = baseurl + zipcode + ",us&appid=" + apiKey;
     console.log('Date is ', newDate);
@@ -57,6 +71,7 @@ const getTemperature = async (baseurl, apiKey, zipcode, feelings)=>{
         const str = JSON.stringify(temp_in_far);
         console.log("Object is ", str);*/
         postData('/temperature', {temperate : String(temp_in_far), feeling: feelings, date : newDate});
+        updateUI();
         return data;
     }   
     catch(error) {

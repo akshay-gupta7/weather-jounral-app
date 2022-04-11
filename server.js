@@ -20,13 +20,13 @@ const cors = require('cors');
 /* Initializing the main project folder */
 app.use(express.static('website'));
 
-const port = 8089;
+const port = 8090;
 
 const server = app.listen(port, listening);
 
-app.get('/hi', (req, res)=>{
-    console.log("Hi");
-    res.send("hello from the server");
+app.get('/all', (req, res)=>{
+    //console.log("Hi");
+    res.send(projectData);
 });
 
 function listening(){

@@ -17,12 +17,12 @@ function performAction(e){
 }
 
 const getTemperatue = async (baseurl, apiKey, zipcode, feelings)=>{
-    const finalurl=baseurl+zipcode+",us&appid="+apiKey;
+    const finalurl = baseurl + zipcode + ",us&appid=" + apiKey;
     const res = await fetch(finalurl)
     try{
 
         const data = await res.json();
-        console.log(data);
+        console.log("The following is the response of data: ", data);
         return data;
     }   catch(error) {
         console.log("error", error);

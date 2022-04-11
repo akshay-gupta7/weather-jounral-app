@@ -29,6 +29,20 @@ app.get('/all', (req, res)=>{
     res.send(projectData);
 });
 
+app.post('/add', callBack);
+
+function callBack(req,res){
+    res.send('POST received');
+};
+
+const data = [];
+
+app.post('/temperature', addtemperature);
+
+function addtemperature(req,res){
+    data.push(req.body);
+};
+
 function listening(){
     console.log("server running");
     console.log(`running on localhost ${port}`);

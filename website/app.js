@@ -29,3 +29,8 @@ const getTemperatue = async (baseurl, apiKey, zipcode, feelings)=>{
     }
     
 }
+
+const postData = async (url = '', data = {})=>{
+    console.log("This is Data in Post Function body:", data);
+    
+}

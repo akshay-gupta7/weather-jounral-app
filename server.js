@@ -20,7 +20,7 @@ const cors = require('cors');
 /* Initializing the main project folder */
 app.use(express.static('website'));
 
-const port = 8103 ;
+const port = 8000;
 
 const server = app.listen(port, listening);
 

@@ -20,25 +20,6 @@ function performAction(e){
     getTemperature(baseurl, apiKey, zipcode, feelings);
 }
 
-const getTemperature = async (baseurl, apiKey, zipcode, feelings)=>{
-    const finalurl = baseurl + zipcode + ",us&appid=" + apiKey;
-    console.log('Date is ', newDate);
-
-    const res = await fetch(finalurl)
-    try{
-        const data = await res.json();
-        console.log("The following is the response of data: ", data);
-        const temp_in_far = data.main.temp;
-        console.log("Temperature in Degrees farhenheit is:", temp_in_far);
-        console.log("Feelings is", feelings);
-        return temp_in_far;
-    }   
-    catch(error) {
-        console.log("error", error);
-    }
-    
-}
-
 const postData = async (url = '', data = {})=>{
     console.log("This is Data in Post Function body:", data);
     const response = await fetch(url, {
@@ -52,11 +33,38 @@ const postData = async (url = '', data = {})=>{
 
     try{
         const newData = await response.json();
-        console.log("Try", newData);
+        console.log("Try", newData[0].temperature, newData[0].feelings, newData[0].date);
         return newData;
     }catch(error) {
         console.log("error is ", error);
     }
 }
 
-postData('/temperature', {temperature: '66', feelings: 'Dense'} );
+const getTemperature = async (baseurl, apiKey, zipcode, feelings)=>{
+    const finalurl = baseurl + zipcode + ",us&appid=" + apiKey;
+    console.log('Date is ', newDate);
+    const res = await fetch(finalurl)
+    try{
+        const data = await res.json();
+        console.log("The following is the response of data: ", data);
+        const temp_in_far = data.main.temp;
+        console.log("Temperature in Degrees farhenheit is:", temp_in_far);
+        console.log("Feelings is", feelings);
+        /*obj = new Object();
+        obj.temperature = temp_in_far;
+        obj.feeling = feelings;
+        obj.date = newDate;
+        const str = JSON.stringify(temp_in_far);
+        console.log("Object is ", str);*/
+        postData('/temperature', {temperate : String(temp_in_far), feeling: feelings, date : newDate});
+        return data;
+    }   
+    catch(error) {
+        console.log("error", error);
+    }
+    
+}
+
+
+
+//postData('/temperature', {temperature: '66', feelings: 'Dense'} );

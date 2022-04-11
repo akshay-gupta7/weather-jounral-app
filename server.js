@@ -1,5 +1,5 @@
 /* Empty JS object to act as endpoint for all routes */
-projectData = {};
+let projectData = {};
 
 // TODO-Express to run server and routes
 const express = require('express');
@@ -20,14 +20,17 @@ const cors = require('cors');
 /* Initializing the main project folder */
 app.use(express.static('website'));
 
-const port = 3000;
+const port = 8082;
 
 const server = app.listen(port, listening);
+
+app.get('website/', (req, res)=>{
+    console.log("Hi");
+    res.send("hello from the server");
+});
 
 function listening(){
     console.log("server running");
     console.log(`running on localhost ${port}`);
 }
 
-projectData = {
-}

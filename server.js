@@ -24,10 +24,10 @@ const port = 8082;
 
 const server = app.listen(port, listening);
 
-app.get('website/', (req, res)=>{
+/*app.get('website/', (req, res)=>{
     console.log("Hi");
     res.send("hello from the server");
-});
+});*/
 
 function listening(){
     console.log("server running");

@@ -20,7 +20,7 @@ const cors = require('cors');
 /* Initializing the main project folder */
 app.use(express.static('website'));
 
-const port = 8090;
+const port = 8093 ;
 
 const server = app.listen(port, listening);
 
@@ -40,7 +40,7 @@ const data = [];
 app.post('/temperature', addtemperature);
 
 function addtemperature(req,res){
-    data.push(req.body);
+    projectData.push(req.body);
 };
 
 function listening(){
